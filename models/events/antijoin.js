@@ -2,7 +2,7 @@ module.exports.config = {
  name: "antijoin",
  eventType: ["log:subscribe"],
  version: "1.0.0",
- credits: "Prem babu",
+ credits: "Faiz Ansari",
  description: "Cấm thành viên mới vào nhóm"
 };
 
