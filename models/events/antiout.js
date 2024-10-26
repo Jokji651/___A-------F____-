@@ -1,5 +1,5 @@
 module.exports.config = {
- name: "Prem.babu",
+ name: "Faiz Ansari",
  eventType: ["log:unsubscribe"],
  version: "0.0.1",
  credits: "DungUwU",
