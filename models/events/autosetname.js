@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "autosetname",
 	eventType: ["log:subscribe"],
 	version: "1.0.3",
-	credits: "Prem babu",
+	credits: "Faizu",
 	description: "Automatically set new member nicknames"
 };
 
