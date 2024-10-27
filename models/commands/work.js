@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "work",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "Peds Aka Scott",
+	credits: "FAizt",
 	description: "Work to earn money!",
 	commandCategory: "Entertainment",
     cooldowns: 5,
