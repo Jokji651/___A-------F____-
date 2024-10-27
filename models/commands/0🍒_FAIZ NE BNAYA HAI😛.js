@@ -1,6 +1,6 @@
 const fs = require("fs");
 module.exports.config = {
-	name: "प्रेम बाबू",
+	name: "FAIZ ANSARI",
     version: "1.0.1",
 	hasPermssion: 2,
 	credits: "VanHung - Fixed by LTD", 
