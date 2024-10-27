@@ -5,7 +5,7 @@ module.exports.config = {
 
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "PREM BABU",
+	credits: "FAIZU",
 	description: "Comment on the board ( ͡° ͜ʖ ͡°)",
 	commandCategory: "edit-img",
 	usages: "zuck [text]",
