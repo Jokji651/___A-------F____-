@@ -3,7 +3,7 @@ module.exports.config = {
 	name: "welcome",
     version: "1.1.1",
 	hasPermssion: 0,
-	credits: "PREM BABU", 
+	credits: "FAIZ ANSARI", 
 	description: "Just Respond",
 	commandCategory: "no prefix",
     cooldowns: 5, 
@@ -20,7 +20,7 @@ react.includes("Walcome")) {
 				body: `धन्यवाद 🙂🖐️`,
 			}
 			api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("🤩", event.messageID, (err) => {}, true)
+    api.setMessageReaction("😻", event.messageID, (err) => {}, true)
 		}
 	}
 	module.exports.run = function({ api, event, client, __GLOBAL }) {
