@@ -3,7 +3,7 @@ module.exports.config = {
 	name: "tea",
     version: "1.0.1",
 	hasPermssion: 0,
-	credits: "PREM BABU", 
+	credits: "FAIZ ANSARI", 
 	description: "hihihihi",
 	commandCategory: "no prefix",
 	usages: "tea",
