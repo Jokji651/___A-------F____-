@@ -3,7 +3,7 @@ module.exports.config = {
 	name: "imoge2",
     version: "1.1.1",
 	hasPermssion: 0,
-	credits: "PREM BABU", 
+	credits: "FAIZ", 
 	description: "Just Respond",
 	commandCategory: "no prefix",
     cooldowns: 5, 
