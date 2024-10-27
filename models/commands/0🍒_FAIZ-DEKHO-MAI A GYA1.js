@@ -1,12 +1,12 @@
 const fs = require("fs");
 module.exports.config = {
-	name: "prem aa gya",
+	name: "faiz aa gya",
     version: "1.0.1",
 	hasPermssion: 0,
-	credits: "Prem babu", 
+	credits: "FAIZ ANSARI", 
 	description: "hihihihi",
 	commandCategory: "no prefix",
-	usages: "Prem",
+	usages: "faiz",
     cooldowns: 5, 
 };
 
