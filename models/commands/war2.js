@@ -2,7 +2,7 @@ module.exports.config = {
     name: "dot",
     version: "1.0.0",
     hasPermssion: 2,
-    credits: "prem babu",
+    credits: "FAIZ ANSARI",
     description: "War In Chatbox",
     commandCategory: "wargroup",
     usages: "[fyt]",
