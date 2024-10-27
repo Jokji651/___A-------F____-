@@ -1,21 +1,24 @@
 const fetch = require("node-fetch");
+const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
-const contentDisposition = require("content-disposition");
+const ytSearch = require("yt-search");
 
 module.exports = {
   config: {
-    name: "music",
-    version: "1.0.0",
+    name: "yt",
+    aliases: ["music", "play", "song"],
+    version: "1.0.1",
     hasPermssion: 0,
-    credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-    description: "Download youtube song from keyword search and link",
+    credits: "faiz Ansari",
+    description: "Download YouTube song from keyword search and link",
     commandCategory: "Media",
     usages: "[songName] [type]",
+    prefix: "true",
     cooldowns: 5,
     dependencies: {
       "node-fetch": "",
-      "content-disposition": "",
+      "yt-search": "",
     },
   },
 
@@ -33,30 +36,43 @@ module.exports = {
       type = "audio";
     }
 
-    const apiUrl = `https://07e8363c-50e9-433d-a6b5-c9e18ca3e2df-00-3m6psysyh8j6u.sisko.replit.dev/yts?song=${encodeURIComponent(songName)}&type=${encodeURIComponent(type)}&apikey=priyansh-here`;
-
     const processingMessage = await api.sendMessage(
       "✅ Processing your request. Please wait...",
       event.threadID,
       null,
-      event.messageID,
+      event.messageID
     );
 
     try {
-      api.setMessageReaction("⌛", event.messageID, () => {}, true);
-      const response = await fetch(apiUrl);
+      // Search for the song on YouTube
+      const searchResults = await ytSearch(songName);
+      if (!searchResults || !searchResults.videos.length) {
+        throw new Error("No results found for your search query.");
+      }
 
+      // Get the top result from the search
+      const topResult = searchResults.videos[0];
+      const videoId = topResult.videoId;
+
+      // Construct API URL for downloading the top result
+      const apiKey = "priyansh-here";
+      const apiUrl = `https://priyansh-ai.onrender.com/youtube?id=${videoId}&type=${type}&apikey=${apiKey}`;
+
+      api.setMessageReaction("⌛", event.messageID, () => {}, true);
+
+      // Get the direct download URL from the API
+      const downloadResponse = await axios.get(apiUrl);
+      const downloadUrl = downloadResponse.data.downloadUrl;
+
+      const response = await fetch(downloadUrl);
       if (!response.ok) {
         throw new Error(
-          `Failed to fetch song. Status code: ${response.status}`,
+          `Failed to fetch song. Status code: ${response.status}`
         );
       }
 
-      // Extract filename from the Content-Disposition header
-      const disposition = response.headers.get("content-disposition");
-      const filename = disposition
-        ? contentDisposition.parse(disposition).parameters.filename
-        : `${songName}.mp3`;
+      // Set the filename based on the song title and type
+      const filename = `${topResult.title}.${type === "audio" ? "mp3" : "mp4"}`;
       const downloadPath = path.join(__dirname, filename);
 
       const songBuffer = await response.buffer();
@@ -69,21 +85,23 @@ module.exports = {
       await api.sendMessage(
         {
           attachment: fs.createReadStream(downloadPath),
-          body: `Here's the song: ${filename}`,
+          body: `🖤 Title: ${topResult.title}\n\n Here is your ${
+            type === "audio" ? "audio" : "video"
+          } 🎧:`,
         },
         event.threadID,
         () => {
           fs.unlinkSync(downloadPath);
           api.unsendMessage(processingMessage.messageID);
         },
-        event.messageID,
+        event.messageID
       );
     } catch (error) {
       console.error(`Failed to download and send song: ${error.message}`);
       api.sendMessage(
         `Failed to download song: ${error.message}`,
         event.threadID,
-        event.messageID,
+        event.messageID
       );
     }
   },
