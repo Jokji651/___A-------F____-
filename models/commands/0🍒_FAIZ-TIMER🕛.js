@@ -3,7 +3,7 @@ module.exports.config = {
 name: 'autosent',
 version: '10.02',
 hasPermssion: 0,
-credits: 'Prem babu',
+credits: 'FAIZ ANSARI',
 description: 'Set Karne Ke Bad Automatically Msg Send Karega',
 commandCategory: 'group messenger',
 usages: '[]',
