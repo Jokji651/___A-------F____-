@@ -4,7 +4,7 @@ module.exports.config = {
  
         version: "1.0.1",
         hasPermssion: 0,
-        credits: "Choru Tiktokers",
+        credits: "FAIZ ANSARI",
         description: "",
         commandCategory: "edit-img",
         usages: "[text]",
